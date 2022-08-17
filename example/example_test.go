@@ -15,7 +15,7 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 	// })
 
 	// Create the API handler from our server implementation
-	apiHandler := rest.DefaultRestApiHandler()
+	apiHandler := NewRestApiHandler()
 
 	// Create a dispatcher to allow cucumboa to send requests to our API
 	dispatcher := cucumboa.CreateHandlerDispatcher(apiHandler)
