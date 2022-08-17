@@ -2,7 +2,7 @@ package cucumboa
 
 import (
 	"github.com/cucumber/godog"
-	"github.com/obfu5c8/go-api/pkg/cucumboa/internal/openapi"
+	"github.com/obfu5c8/cucumboa/internal/openapi"
 )
 
 type Options struct {

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/obfu5c8/go-api/pkg/cucumboa/internal/openapi"
+	"github.com/obfu5c8/cucumboa/internal/openapi"
 	"github.com/tidwall/gjson"
 )
 

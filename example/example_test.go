@@ -4,8 +4,7 @@ import (
 	"testing"
 
 	"github.com/cucumber/godog"
-	"github.com/obfu5c8/go-api/internal/api/rest"
-	"github.com/obfu5c8/go-api/pkg/cucumboa"
+	"github.com/obfu5c8/cucumboa"
 )
 
 var schema = cucumboa.MustLoadOpenApiSchemaFromFile("../../../api/openapi.yml")
