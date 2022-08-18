@@ -9,11 +9,12 @@ import (
 	"github.com/tidwall/gjson"
 )
 
-func bindSteps(sc *godog.ScenarioContext, ctx Context) {
+func bindSteps(sc *godog.ScenarioContext, ctx *Context) {
 	steps := steps{ctx: ctx}
 
 	// Request configuration
 	sc.Step(`^the \'([^']+)\' operation is called$`, steps.callOperationStep)
+	sc.Step(`^the \'([^']+)\' operation is called with (.+): '([^']+)'$`, steps.callOperationWithSingleParamStep)
 	sc.Step(`^the \'([^']+)\' operation is called with path params:$`, steps.callOperationWithPathParamsStep)
 
 	// // Response assertions
@@ -22,7 +23,7 @@ func bindSteps(sc *godog.ScenarioContext, ctx Context) {
 }
 
 type steps struct {
-	ctx Context
+	ctx *Context
 }
 
 // Sets the operation to call in the request
@@ -46,6 +47,17 @@ func (s *steps) callOperationWithPathParamsStep(operationId string, pathParamsTa
 	return s.ctx.SetPathParams(pathParams)
 }
 
+func (s *steps) callOperationWithSingleParamStep(operationId string, key string, value string) error {
+	err := s.ctx.SetOperation(operationId)
+	if err != nil {
+		return err
+	}
+
+	return s.ctx.SetPathParams(map[string]string{
+		key: value,
+	})
+}
+
 // Asserts the response status is expected
 func (s *steps) assertResponseStatusStep(status string) error {
 	expected, _ := strconv.ParseInt(status, 10, 16)
@@ -58,7 +70,7 @@ func (s *steps) assertResponseStatusStep(status string) error {
 	}
 
 	// Validate the response body against the schema
-	err := ValidateResponseBody(&s.ctx)
+	err := ValidateResponseBody(s.ctx)
 	if err != nil {
 		ourMsg := "The expected response code was received, however"
 		return errors.New(fmt.Sprintf("%s %s", ourMsg, err.Error()))

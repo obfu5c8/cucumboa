@@ -92,11 +92,16 @@ func TestApiSpec(t *testing.T) {
 
 #### _`... the {name} operation is called`_
 
-#### _`... the {name} operation is called with path params:`_
+#### _`... the {name} operation is called with {param}: '{value}'`_
+
+#### _`... the {name} operation is called with path params: <table>`_
+
 
 ### Response Assertions
 
 #### _`... the response status will be '{code}'`_
+
+#### _`... the content will have values: <table>`_
 
 
 

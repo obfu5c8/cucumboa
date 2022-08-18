@@ -7,6 +7,7 @@ require (
 	github.com/cucumber/godog v0.12.5 // indirect
 	github.com/cucumber/messages-go/v16 v16.0.1 // indirect
 	github.com/getkin/kin-openapi v0.98.0 // indirect
+	github.com/go-chi/chi v1.5.4 // indirect
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect
 	github.com/go-openapi/swag v0.19.5 // indirect
 	github.com/gofrs/uuid v4.0.0+incompatible // indirect

@@ -8,6 +8,7 @@ import (
 	"github.com/tidwall/gjson"
 )
 
+// Validates a response against the OpenAPI schema
 func ValidateResponseBody(ctx *Context) error {
 
 	response := ctx.GetResponse()
@@ -22,6 +23,9 @@ func ValidateResponseBody(ctx *Context) error {
 	return err
 }
 
+// Assert that the response body contains certain values
+// Deep-nested json properties can be referenced using dot notation
+// Properties not passed in the values map are ignored
 func AssertResponseContentContainsValues(ctx *Context, values map[string]string) error {
 	body := ctx.GetResponseBody()
 
