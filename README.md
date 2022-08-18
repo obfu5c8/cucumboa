@@ -131,9 +131,9 @@ type DSL struct {
 
 func (dsl *DSL) CallOperationWithIdPathParamStep(operation string, id string) error {
     dsl.c.SetOperation(operation)
-    dsl.c.SetPathParams(make(map[string][string]{
+    dsl.c.SetPathParams(map[string]string{
         petId: id
-    }))
+    })
     return nil
 }
 
